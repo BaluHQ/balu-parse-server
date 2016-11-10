@@ -1,11 +1,11 @@
 {
-  "name": "parse-server-example",
+  "name": "balu-parse-server",
   "version": "1.4.0",
-  "description": "An example Parse API server using the parse-server module",
+  "description": "The Balu Parse API server using the parse-server module",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ParsePlatform/parse-server-example"
+    "url": "https://github.com/BaluHQ/balu-parse-server"
   },
   "license": "MIT",
   "dependencies": {
