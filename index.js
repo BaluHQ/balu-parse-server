@@ -9,12 +9,12 @@ var path = require('path');
 // Environment variables are managed in Heroku
 
 var api = new ParseServer({
-  databaseURI: process.env.DATABASE_URI_TEST, // process.env.DATABASE_URI_PROD;
+  databaseURI: process.env.DATABASE_URI,
   cloud:       process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js', // The location of the cloud code main.js file
   appId:       process.env.APP_ID, // The unique ID used by the apps' Parse SDK to access this Parse Server
   fileKey:     process.env.FILE_ID, // Used by Parse Server to access files still stored on parse.com
   masterKey:   process.env.MASTER_KEY, // The Parse master key here.
-  serverURL:   process.env.SERVER_URL || 'http://localhost:1337/parse',  // The location to host this Parse Server. Defaults to localhost if no env variables.
+  serverURL:   process.env.SERVER_URL,  // The location to host this Parse Server. Defaults to localhost if no env variables.
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
   }
