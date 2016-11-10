@@ -1,119 +1,23 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "parse-server-example",
-        "scope": null,
-        "escapedName": "parse-server-example",
-        "name": "parse-server-example",
-        "rawSpec": "",
-        "spec": "latest",
-        "type": "tag"
-      },
-      "/Users/git"
-    ]
-  ],
-  "_from": "parse-server-example@latest",
-  "_id": "parse-server-example@1.4.0",
-  "_inCache": true,
-  "_location": "/parse-server-example",
-  "_nodeVersion": "4.4.0",
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/balu-parse-server-1.4.0.tgz_1458343785973_0.7583068581297994"
+  "name": "parse-server-example",
+  "version": "1.4.0",
+  "description": "An example Parse API server using the parse-server module",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ParsePlatform/parse-server-example"
   },
-  "_npmUser": {
-    "name": "fosco",
-    "email": "fosco@fosco.com"
-  },
-  "_npmVersion": "2.14.20",
-  "_phantomChildren": {
-    "array-flatten": "1.1.1",
-    "bcrypt": "0.8.7",
-    "bcryptjs": "2.3.0",
-    "body-parser": "1.15.2",
-    "commander": "2.9.0",
-    "content-type": "1.0.2",
-    "debug": "2.2.0",
-    "deepcopy": "0.6.3",
-    "encodeurl": "1.0.1",
-    "forwarded": "0.1.0",
-    "http-errors": "1.5.0",
-    "intersect": "1.0.1",
-    "lodash": "4.16.4",
-    "lru-cache": "4.0.1",
-    "media-typer": "0.3.0",
-    "methods": "1.1.2",
-    "mime-types": "2.1.12",
-    "mongodb": "2.2.10",
-    "ms": "0.7.1",
-    "multer": "1.2.0",
-    "parse-server-fs-adapter": "1.0.1",
-    "parse-server-push-adapter": "1.1.0",
-    "parse-server-s3-adapter": "1.0.5",
-    "parse-server-simple-mailgun-adapter": "1.0.0",
-    "parseurl": "1.3.1",
-    "pg-promise": "5.3.3",
-    "qs": "6.2.0",
-    "redis": "2.6.2",
-    "regenerator-runtime": "0.9.5",
-    "request": "2.75.0",
-    "semver": "5.2.0",
-    "statuses": "1.3.0",
-    "tv4": "1.2.7",
-    "unpipe": "1.0.0",
-    "utils-merge": "1.0.0",
-    "winston": "2.2.0",
-    "winston-daily-rotate-file": "1.3.1",
-    "ws": "1.1.1",
-    "xmlhttprequest": "1.8.0"
-  },
-  "_requested": {
-    "raw": "parse-server-example",
-    "scope": null,
-    "escapedName": "parse-server-example",
-    "name": "parse-server-example",
-    "rawSpec": "",
-    "spec": "latest",
-    "type": "tag"
-  },
-  "_requiredBy": [
-    "#USER",
-    "/"
-  ],
-  "_shasum": "8415ceb8610cd5794242e7ae78aa16efd2dbaed4",
-  "_shrinkwrap": null,
-  "_spec": "parse-server-example",
-  "_where": "/Users/b_spurling/git/balu-parse-server",
+  "license": "MIT",
   "dependencies": {
     "express": "~4.11.x",
     "kerberos": "~0.0.x",
     "parse": "~1.8.0",
-    "parse-server": "~2.2.0"
-  },
-  "description": "The Balu Parse API server using the parse-server module",
-  "devDependencies": {},
-  "directories": {},
- "engines": {
-    "node": ">=4.3"
-  },
-  "license": "MIT",
-  "main": "index.js",
-  "maintainers": [
-    {
-      "name": "fosco",
-      "email": "fosco@fosco.com"
-    }
-  ],
-  "name": "parse-server-example",
-  "optionalDependencies": {},
-  "readme": "/README.md",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/BaluHQ/balu-parse-server.git"
+    "parse-server": "*"
   },
   "scripts": {
     "start": "node index.js"
   },
-  "version": "1.4.0"
+  "engines": {
+    "node": ">=4.3"
+  }
 }
