@@ -14,7 +14,7 @@ var api = new ParseServer({
   appId:       process.env.APP_ID, // The unique ID used by the apps' Parse SDK to access this Parse Server
   fileKey:     process.env.FILE_ID, // Used by Parse Server to access files still stored on parse.com
   masterKey:   process.env.MASTER_KEY, // The Parse master key here.
-  serverURL:   process.env.SERVER_URL,  // The location to host this Parse Server. Defaults to localhost if no env variables.
+  serverURL:   process.env.SERVER_URL,  // The location to host this Parse Server. 
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
   }
