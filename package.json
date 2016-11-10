@@ -5,7 +5,7 @@
         "raw": "balu-parse-server",
         "scope": null,
         "escapedName": "balu-parse-server",
-        "name": "balu-parse-server",
+        "name": "parse-server-example",
         "rawSpec": "",
         "spec": "latest",
         "type": "tag"
@@ -84,14 +84,14 @@
   "_shasum": "8415ceb8610cd5794242e7ae78aa16efd2dbaed4",
   "_shrinkwrap": null,
   "_spec": "balu-parse-server",
-  "_where": "/Users/b_spurling/Dropbox/Balu/GitHub/Balu",
+  "_where": "/Users/b_spurling/git/balu-parse-server",
   "dependencies": {
     "express": "~4.11.x",
     "kerberos": "~0.0.x",
     "parse": "~1.8.0",
     "parse-server": "~2.2.0"
   },
-  "description": "An example Parse API server using the parse-server module",
+  "description": "The Balu Parse API server using the parse-server module",
   "devDependencies": {},
   "directories": {},
  "engines": {
@@ -110,7 +110,7 @@
   "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BaluHQ/Balu/balu-parse-server.git"
+    "url": "git+https://github.com/BaluHQ/balu-parse-server.git"
   },
   "scripts": {
     "start": "node index.js"
