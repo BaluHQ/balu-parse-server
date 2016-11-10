@@ -2,21 +2,21 @@
   "_args": [
     [
       {
-        "raw": "balu-parse-server",
+        "raw": "parse-server-example",
         "scope": null,
-        "escapedName": "balu-parse-server",
+        "escapedName": "parse-server-example",
         "name": "parse-server-example",
         "rawSpec": "",
         "spec": "latest",
         "type": "tag"
       },
-      "/Users/b_spurling/Dropbox/Balu/GitHub/Balu"
+      "/Users/git"
     ]
   ],
-  "_from": "balu-parse-server@latest",
-  "_id": "balu-parse-server@1.4.0",
+  "_from": "parse-server-example@latest",
+  "_id": "parse-server-example@1.4.0",
   "_inCache": true,
-  "_location": "/balu-parse-server",
+  "_location": "/parse-server-example",
   "_nodeVersion": "4.4.0",
   "_npmOperationalInternal": {
     "host": "packages-12-west.internal.npmjs.com",
@@ -69,10 +69,10 @@
     "xmlhttprequest": "1.8.0"
   },
   "_requested": {
-    "raw": "balu-parse-server",
+    "raw": "parse-server-example",
     "scope": null,
-    "escapedName": "balu-parse-server",
-    "name": "balu-parse-server",
+    "escapedName": "parse-server-example",
+    "name": "parse-server-example",
     "rawSpec": "",
     "spec": "latest",
     "type": "tag"
@@ -83,7 +83,7 @@
   ],
   "_shasum": "8415ceb8610cd5794242e7ae78aa16efd2dbaed4",
   "_shrinkwrap": null,
-  "_spec": "balu-parse-server",
+  "_spec": "parse-server-example",
   "_where": "/Users/b_spurling/git/balu-parse-server",
   "dependencies": {
     "express": "~4.11.x",
@@ -105,9 +105,9 @@
       "email": "fosco@fosco.com"
     }
   ],
-  "name": "balu-parse-server",
+  "name": "parse-server-example",
   "optionalDependencies": {},
-  "readme": "ERROR: No README data found!",
+  "readme": "/README.md",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/BaluHQ/balu-parse-server.git"
