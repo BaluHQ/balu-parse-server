@@ -19,7 +19,7 @@ var api = new ParseServer({
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
   },
   verifyUserEmails: true,
-  publicServerURL: process.env.SERVER_URL,
+  publicServerURL: process.env.PUBLIC_SERVER_URL,
   appName: 'Balu',
   emailAdapter: {
      module: 'parse-server-simple-mailgun-adapter',
