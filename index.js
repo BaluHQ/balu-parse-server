@@ -17,6 +17,17 @@ var api = new ParseServer({
   serverURL:   process.env.SERVER_URL,  // The location to host this Parse Server.
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
+  },
+  verifyUserEmails: true,
+  publicServerURL: process.env.SERVER_URL,
+  appName: 'Balu',
+  emailAdapter: {
+     module: 'parse-server-simple-mailgun-adapter',
+     options: {
+       fromAddress: 'info@getbalu.org',
+       domain: 'getbalu.org',
+       apiKey: 'key-64f729379fba12e46c2410f25c4c7f20',
+     }
   }
 });
 
