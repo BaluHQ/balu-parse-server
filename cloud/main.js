@@ -444,7 +444,7 @@ Parse.Cloud.beforeSave("Recommendation", function(request, response) {
     // Repeat the code, one for if we have a productGroup pointer in productGroups (product-level recommendations)
     // The other for if we have a searchCategory pointer (website-level recommendations)
     // For recommendations where both apply, it will simply do the update twice for brandName, productName and productURL twice
-    if(typeof request.object.get('productGroups') !== 'undefined'){
+    if(typeof request.object.get('productGroups').id !== 'undefined'){
         var ProductGroup = Parse.Object.extend('ProductGroup');
         productGroupQuery = new Parse.Query(ProductGroup);
         productGroupQuery.get(request.object.get('productGroups').id, {
@@ -486,7 +486,7 @@ Parse.Cloud.beforeSave("Recommendation", function(request, response) {
         });
     } // if productGroups not null
 
-    if(typeof request.object.get('searchCategory') !== 'undefined'){
+    if(typeof request.object.get('searchCategory').id !== 'undefined'){
         var SearchCategory = Parse.Object.extend('SearchCategory');
         searchCategoryQuery = new Parse.Query(SearchCategory);
         searchCategoryQuery.get(request.object.get('searchCategory').id, {
