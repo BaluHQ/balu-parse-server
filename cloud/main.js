@@ -440,48 +440,93 @@ Parse.Cloud.beforeSave("Recommendation", function(request, response) {
         productURL_LC_HTTP = 'http://' + productURL_LC_HTTP;
     }
 
-    var ProductGroup = Parse.Object.extend('ProductGroup');
-    productGroupQuery = new Parse.Query(ProductGroup);
+    // This isn't the best way to do it, but it's easy:
+    // Repeat the code, one for if we have a productGroup pointer in productGroups (product-level recommendations)
+    // The other for if we have a searchCategory pointer (website-level recommendations)
+    // For recommendations where both apply, it will simply do the update twice for brandName, productName and productURL twice
+    if(typeof request.object.get('productGroups') !== 'undefined'){
+        var ProductGroup = Parse.Object.extend('ProductGroup');
+        productGroupQuery = new Parse.Query(ProductGroup);
+        productGroupQuery.get(request.object.get('productGroups').id, {
+            useMasterKey: true,
+            success: function(productGroup){
 
+                var EthicalBrand = Parse.Object.extend('EthicalBrand');
+                ethicalBrandQuery = new Parse.Query(EthicalBrand);
+                ethicalBrandQuery.get(request.object.get('ethicalBrand').id, {
+                    useMasterKey: true,
+                    success: function(ethicalBrand){
 
-    productGroupQuery.get(request.object.get('productGroups').id, {
-        useMasterKey: true,
-        success: function(productGroup){
+                        request.object.set(
+                            "productGroup_sort",
+                            productGroup.get('productGroupName').toLowerCase());
 
-            var EthicalBrand = Parse.Object.extend('EthicalBrand');
-            ethicalBrandQuery = new Parse.Query(EthicalBrand);
+                        request.object.set(
+                            "productName_LC",
+                            request.object.get("productName").toLowerCase());
 
-            ethicalBrandQuery.get(request.object.get('ethicalBrand').id, {
-                useMasterKey: true,
-                success: function(ethicalBrand){
+                        request.object.set(
+                            "brandName_sort",
+                            ethicalBrand.get("brandName").toLowerCase());
 
-                    request.object.set(
-                        "productGroup_sort",
-                        productGroup.get('productGroupName').toLowerCase());
+                        request.object.set(
+                            "productURL",
+                            productURL_LC_HTTP);
 
-                    request.object.set(
-                        "productName_LC",
-                        request.object.get("productName").toLowerCase());
+                        response.success();
+                    },
+                    error: function(result, error) {
+                        console.error("Error: " + error.code + " " + error.message);
+                    }
+                });
+            },
+            error: function(result, error) {
+                console.error("Error: " + error.code + " " + error.message);
+            }
+        });
+    } // if productGroups not null
 
-                    request.object.set(
-                        "brandName_sort",
-                        ethicalBrand.get("brandName").toLowerCase());
+    if(typeof request.object.get('searchCategory') !== 'undefined'){
+        var SearchCategory = Parse.Object.extend('SearchCategory');
+        searchCategoryQuery = new Parse.Query(SearchCategory);
+        searchCategoryQuery.get(request.object.get('searchCategory').id, {
+            useMasterKey: true,
+            success: function(searchCategory){
 
-                    request.object.set(
-                        "productURL",
-                        productURL_LC_HTTP);
+                var EthicalBrand = Parse.Object.extend('EthicalBrand');
+                ethicalBrandQuery = new Parse.Query(EthicalBrand);
+                ethicalBrandQuery.get(request.object.get('ethicalBrand').id, {
+                    useMasterKey: true,
+                    success: function(ethicalBrand){
 
-                    response.success();
-                },
-                error: function(result, error) {
-                    console.error("Error: " + error.code + " " + error.message);
-                }
-            });
-        },
-        error: function(result, error) {
-            console.error("Error: " + error.code + " " + error.message);
-        }
-    });
+                        request.object.set(
+                            "productName_LC",
+                            request.object.get("productName").toLowerCase());
+
+                        request.object.set(
+                            "brandName_sort",
+                            ethicalBrand.get("brandName").toLowerCase());
+
+                        request.object.set(
+                            "productURL",
+                            productURL_LC_HTTP);
+
+                        request.object.set(
+                            "searchCategory_sort",
+                            searchCategory.get('categoryName').toLowerCase());
+
+                        response.success();
+                    },
+                    error: function(result, error) {
+                        console.error("Error: " + error.code + " " + error.message);
+                    }
+                });
+            },
+            error: function(result, error) {
+                console.error("Error: " + error.code + " " + error.message);
+            }
+        });
+    } // if searchCategory is not null
 });
 
 
