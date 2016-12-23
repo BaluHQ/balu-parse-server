@@ -602,6 +602,7 @@ module.exports = {
         //stats_RecClickThroughQuery.ascending('');
 
         stats_RecClickThroughQuery.find({
+            sessionToken: pvArgs.sessionToken,
             success: function(pvData){
                 if(pvData.length >= 1000) {
                     lvErrorMessage = 'Stats_RecClickThrough.find() is exceeding Parse Server row limit. Code needs upgrading otherwise data will be ignored!';
@@ -641,6 +642,7 @@ module.exports = {
         //stats_RecommendationQuery.ascending('');
 
         stats_RecommendationQuery.find({
+            sessionToken: pvArgs.sessionToken,
             success: function(pvData){
                 if(pvData.length >= 1000) {
                     lvErrorMessage = 'Stats_Recommendation.find() is exceeding Parse Server row limit. Code needs upgrading otherwise data will be ignored!';
@@ -686,6 +688,7 @@ module.exports = {
             lvEventNameQuery = pvArgs.userLog_eventNames;
         }
         userLog_query.find({
+            sessionToken: pvArgs.sessionToken,
             success: function(pvData){
                 if(pvData.length >= 1000) {
                     lvErrorMessage = 'UserLog.find() is exceeding Parse Server row limit. Code needs upgrading otherwise data will be ignored!';
@@ -734,6 +737,7 @@ module.exports = {
         userLog_blockBrand_query.ascending('user');
         userLog_blockBrand_query.descending('createdAt');
         userLog_blockBrand_query.find({
+            sessionToken: pvArgs.sessionToken,
             success: function(pvData){
                 if(pvData.length >= 1000) {
                     lvErrorMessage = 'UserLog_BlockBrand.find() is exceeding Parse Server row limit. Code needs upgrading otherwise data will be ignored!';
@@ -784,6 +788,7 @@ module.exports = {
         //userLog_JoyrideQuery.ascending('');
 
         userLog_JoyrideQuery.find({
+            sessionToken: pvArgs.sessionToken,
             success: function(pvData){
                 if(pvData.length >= 1000) {
                     lvErrorMessage = 'UserLog_Joyride.find() is exceeding Parse Server row limit. Code needs upgrading otherwise data will be ignored!';
@@ -831,6 +836,7 @@ module.exports = {
         userLog_ManualSearch_query.limit(1000);
         userLog_ManualSearch_query.descending('createdAt');
         userLog_ManualSearch_query.find({
+            sessionToken: pvArgs.sessionToken,
             success: function(pvData){
                 if(pvData.length >= 1000) {
                     lvErrorMessage = 'UserLog_ManualSearch.find() is exceeding Parse Server row limit. Code needs upgrading otherwise data will be ignored!';
@@ -878,6 +884,7 @@ module.exports = {
         //userLog_ManualSearch_ResultsQuery.ascending('');
 
         userLog_ManualSearch_ResultsQuery.find({
+            sessionToken: pvArgs.sessionToken,
             success: function(pvData){
                 if(pvData.length >= 1000) {
                     lvErrorMessage = 'UserLog_ManualSearch_Results.find() is exceeding Parse Server row limit. Code needs upgrading otherwise data will be ignored!';
@@ -919,6 +926,7 @@ module.exports = {
         userLog_recClickThrough_query.limit(1000);
         userLog_recClickThrough_query.descending('createdAt');
         userLog_recClickThrough_query.find({
+            sessionToken: pvArgs.sessionToken,
             success: function(pvData){
                 if(pvData.length >= 1000) {
                     lvErrorMessage = 'UserLog_RecClickThrough.find() is exceeding Parse Server row limit. Code needs upgrading otherwise data will be ignored!';
@@ -974,6 +982,7 @@ module.exports = {
         userLog_recommendations_query.limit(1000);
         userLog_recommendations_query.descending('createdAt');
         userLog_recommendations_query.find({
+            sessionToken: pvArgs.sessionToken,
             success: function(pvData){
                 if(pvData.length >= 1000) {
                     lvErrorMessage = 'UserLog_Recommendations.find() is exceeding Parse Server row limit. Code needs upgrading otherwise data will be ignored!';
@@ -1021,6 +1030,7 @@ module.exports = {
         //userLog_RecRatingsQuery.ascending('');
 
         userLog_RecRatingsQuery.find({
+            sessionToken: pvArgs.sessionToken,
             success: function(pvData){
                 if(pvData.length >= 1000) {
                     lvErrorMessage = 'UserLog_RecRatings.find() is exceeding Parse Server row limit. Code needs upgrading otherwise data will be ignored!';
@@ -1061,6 +1071,7 @@ module.exports = {
         //userLog_SearchQuery.ascending('');
 
         userLog_SearchQuery.find({
+            sessionToken: pvArgs.sessionToken,
             success: function(pvData){
                 if(pvData.length >= 1000) {
                     lvErrorMessage = 'UserLog_Search.find() is exceeding Parse Server row limit. Code needs upgrading otherwise data will be ignored!';
@@ -1092,7 +1103,6 @@ module.exports = {
         var lvFunctionName = 'getUserLogs_TrackedTabError';
         lvLog += log.log(gvScriptName,lvFunctionName,'Start', 'PROCS');
 
-
         var lvArgs = {rowCount: null, data: []}; // to return the data to the callback
 
         var userLog_TrackedTabError_query = new Parse.Query(Parse.Object.extend('UserLog_TrackedTabError'));
@@ -1111,6 +1121,7 @@ module.exports = {
         userLog_TrackedTabError_query.ascending('processed,originalURL');
         userLog_TrackedTabError_query.descending('createdAt');
         userLog_TrackedTabError_query.find({
+            sessionToken: pvArgs.sessionToken,
             success: function(pvData){
                 if(pvData.length >= 1000) {
                     lvErrorMessage = 'UserLog_TrackedTabError.find() is exceeding Parse Server row limit. Code needs upgrading otherwise data will be ignored!';
@@ -1152,7 +1163,6 @@ module.exports = {
         var lvFunctionName = 'getUserSubmittedRecs';
         lvLog += log.log(gvScriptName,lvFunctionName,'Start', 'PROCS');
 
-
         var lvArgs = {rowCount: null, data: []}; // to return the data to the callback
 
         var userSubmittedRec_query = new Parse.Query(Parse.Object.extend('UserSubmittedRec'));
@@ -1171,6 +1181,7 @@ module.exports = {
         userSubmittedRec_query.ascending('processed,user');
         userSubmittedRec_query.descending('createdAt');
         userSubmittedRec_query.find({
+            sessionToken: pvArgs.sessionToken,
             success: function(pvData){
                 if(pvData.length >= 1000) {
                     lvErrorMessage = 'UserSubmittedRec.find() is exceeding Parse Server row limit. Code needs upgrading otherwise data will be ignored!';
@@ -1229,6 +1240,7 @@ module.exports = {
         }
 
         userSubmittedWebsiteRec_query.find({
+            sessionToken: pvArgs.sessionToken,
             success: function(pvData){
                 if(pvData.length >= 1000) {
                     lvErrorMessage = 'UserSubmittedWebsiteRec.find() is exceeding Parse Server row limit. Code needs upgrading otherwise data will be ignored!';
