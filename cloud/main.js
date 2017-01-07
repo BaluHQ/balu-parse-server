@@ -19,9 +19,17 @@ var gvScriptName = 'main';
  * MISC *
  ********/
 
- Parse.Cloud.define('getDatabaseURI', function(req, res) {
-     misc.getDatabaseURI(req.params,res);
- });
+Parse.Cloud.define('getDatabaseURI', function(req, res) {
+    misc.getDatabaseURI(req.params,res);
+});
+
+/************************
+ * MODEL: Add Functions *
+ ************************/
+
+Parse.Cloud.define('addDirectoryLog', function(req, res) {
+    model.addDirectoryLog(req.params,res);
+});
 
 /************************
  * MODEL: Get Functions *

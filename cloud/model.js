@@ -1320,5 +1320,60 @@ module.exports = {
                 pvResponse.error(JSON.stringify({message: lvErrorMessage,log:lvLog}));
             }
         });
-    }
+    },
+
+    /*
+     * Save an event to the log
+     * Note, this is anonymous (no users)
+     */
+    addDirectoryLog: function(pvArgs,pvResponse) {
+        var lvLog = '';
+        var lvErrorMessage = '';
+        var lvFunctionName = 'addDirectoryLog';
+        var log_event = new (Parse.Object.extend("directoryLog"))();
+        var lvACL = new Parse.ACL();
+        lvACL.setRoleReadAccess("Analytics",true);
+        // For the log events that require no bespoke code...
+        if(pvArgs.eventName === 'WEB_APP-REC_CLICK_THROUGH' ||
+           pvArgs.eventName === 'WEB_APP-BRAND_CLICK_THROUGH' ||
+           pvArgs.eventName === 'WEB_APP-BRAND_DETAIL_CLICK' ||
+           pvArgs.eventName === 'WEB_APP-SEARCH' ||
+           pvArgs.eventName === 'WEB_APP-PAGE_LOAD') {
+            log_event.set('eventName',pvArgs.eventName);
+
+            var lvRecommendation_pointer;
+            var lvBrand_pointer;
+            if(pvArgs !== null) {
+                if(pvArgs.recommendationId !== null && typeof pvArgs.recommendationId !== 'undefined'){
+                    lvRecommendation_pointer = {__type: "Pointer",className: "Recommendation",objectId: pvArgs.recommendationId};
+                }
+                if(pvArgs.brandId !== null && typeof pvArgs.brandId !== 'undefined'){
+                    lvBrand_pointer = {__type: "Pointer",className: "EthicalBrand",objectId: pvArgs.brandId};
+                }
+
+                log_event.set('recommendation',lvRecommendation_pointer);
+                log_event.set('ethicalBrand',lvBrand_pointer);
+                log_event.set('searchTerm',pvArgs.searchTerm);
+                log_event.set('url',pvArgs.url);
+            }
+
+            log_event.set('message',pvArgs.message);
+
+            log_event.setACL(lvACL);
+
+            log_event.save({
+                success: function(){
+                    var lvArgs;
+                    lvArgs.log = lvLog;
+                    pvResponse.success(lvArgs);
+                },
+                error: function (pvError){
+                    var lvErrorMessage = pvError.message; // should be a user-friendly message
+                    lvLog += log.log(gvScriptName,lvFunctionName,lvErrorMessage + ' (' + pvError.message + ')','ERROR');
+                    pvResponse.error(JSON.stringify({message: lvErrorMessage,log:lvLog}));
+                }
+            });
+
+        }
+    },
 };
