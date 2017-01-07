@@ -416,6 +416,12 @@ module.exports = {
                         lvSearchCategoryId = pvData[i].get('searchCategory').id;
                         lvSearchCategoryName = pvData[i].get('searchCategory').get('categoryName');
                     }
+
+                    var lvImageURL = "";
+                    if(pvData[i].get('image')){
+                        lvImageURL = pvData[i].get('image').url();
+                    }
+
                     lvArgs.data.push({
                         createdAt: pvData[i].createdAt.toLocaleString(),
                         recommendationId: pvData[i].id,
@@ -427,7 +433,8 @@ module.exports = {
                         brandName: pvData[i].get('ethicalBrand').get('brandName'),
                         pageConfirmationSearch: pvData[i].get('pageConfirmationSearch'),
                         searchCategoryId: lvSearchCategoryId,
-                        searchCategoryName: lvSearchCategoryName
+                        searchCategoryName: lvSearchCategoryName,
+                        imageURL: lvImageURL
                     });
                 }
                 lvArgs.log = lvLog;
