@@ -1330,7 +1330,7 @@ module.exports = {
         var lvLog = '';
         var lvErrorMessage = '';
         var lvFunctionName = 'addDirectoryLog';
-        var log_event = new (Parse.Object.extend("directoryLog"))();
+        var log_event = new (Parse.Object.extend("DirectoryLog"))();
         var lvACL = new Parse.ACL();
         lvACL.setRoleReadAccess("Analytics",true);
         // For the log events that require no bespoke code...
