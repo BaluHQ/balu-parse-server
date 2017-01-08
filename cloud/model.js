@@ -1363,7 +1363,7 @@ module.exports = {
 
             log_event.save({
                 success: function(){
-                    var lvArgs;
+                    var lvArgs = {};
                     lvArgs.log = lvLog;
                     pvResponse.success(lvArgs);
                 },
