@@ -28,7 +28,8 @@ var api = new ParseServer({
        domain: 'getbalu.org',
        apiKey: 'key-64f729379fba12e46c2410f25c4c7f20',
      }
-  }
+ },
+ filesAdapter: "parse-server-s3-adapter", // configurd in environment vars 
 });
 
 var app = express();
