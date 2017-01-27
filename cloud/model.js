@@ -221,6 +221,13 @@ module.exports = {
         var lvArgs = {rowCount: null, data: []}; // to return the data to the callback
 
         var ethicalBrandQuery = new Parse.Query(Parse.Object.extend('EthicalBrand'));
+        if(pvArgs.archived === 'EXCLUDE') {
+            ethicalBrandQuery.notEqualTo('isArchived',true);
+        } else if (pvArgs.archived === 'ONLY') {
+            ethicalBrandQuery.equalTo('isArchived',true);
+        } else if (pvArgs.archived === 'BOTH') {
+            // do nothing
+        }
         ethicalBrandQuery.limit(1000);
         ethicalBrandQuery.ascending('brandName_LC');
         ethicalBrandQuery.find({
@@ -244,7 +251,8 @@ module.exports = {
                         homepage: pvData[i].get('homepage'),
                         twitterHandle: pvData[i].get('twitterHandle'),
                         baluFavourite: lvBaluFavourite,
-                        brandSpiel: pvData[i].get('brandSpiel')
+                        brandSpiel: pvData[i].get('brandSpiel'),
+                        isArchived: pvData[i].get('isArchived')
                     });
                 }
                 lvArgs.log = lvLog;
@@ -388,6 +396,13 @@ module.exports = {
         var lvArgs = {rowCount: null, data: []}; // to return the data to the callback
 
         var recommendationQuery = new Parse.Query(Parse.Object.extend('Recommendation'));
+        if(pvArgs.archived === 'EXCLUDE') {
+            recommendationQuery.notEqualTo('isArchived',true);
+        } else if (pvArgs.archived === 'ONLY') {
+            recommendationQuery.equalTo('isArchived',true);
+        } else if (pvArgs.archived === 'BOTH') {
+            // do nothing
+        }
         recommendationQuery.include('productGroups'); // should be singular
         recommendationQuery.include('ethicalBrand');
         recommendationQuery.include('searchCategory');
@@ -434,7 +449,8 @@ module.exports = {
                         pageConfirmationSearch: pvData[i].get('pageConfirmationSearch'),
                         searchCategoryId: lvSearchCategoryId,
                         searchCategoryName: lvSearchCategoryName,
-                        imageURL: lvImageURL
+                        imageURL: lvImageURL,
+                        isArchived: pvData[i].get('isArchived')
                     });
                 }
                 lvArgs.log = lvLog;
