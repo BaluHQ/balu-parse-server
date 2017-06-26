@@ -151,7 +151,12 @@ module.exports = {
         // Repeat the code, one for if we have a productGroup pointer in productGroups (product-level recommendations)
         // The other for if we have a searchCategory pointer (website-level recommendations)
         // For recommendations where both apply, it will simply do the update twice for brandName, productName and productURL twice
-        if(typeof pvArgs.object.get('productGroups') !== 'undefined' && typeof pvArgs.object.get('productGroups').id !== 'undefined'){
+
+        if((typeof (pvArgs.object.get('productGroups'))  === 'undefined') &&
+           (typeof (pvArgs.object.get('searchCategory')) === 'undefined')){
+            pvResponse.error('1','Failed to beforeSave the recommendation. A recommendation must have either a productGroup or a searchCategory');
+        }
+        if(typeof (pvArgs.object.get('productGroups')) !== 'undefined' && typeof (pvArgs.object.get('productGroups').id) !== 'undefined'){
             var ProductGroup = Parse.Object.extend('ProductGroup');
             productGroupQuery = new Parse.Query(ProductGroup);
             productGroupQuery.get(pvArgs.object.get('productGroups').id, {
@@ -193,7 +198,7 @@ module.exports = {
             });
         } // if productGroups not null
 
-        if(typeof pvArgs.object.get('searchCategory') !== 'undefined' && typeof pvArgs.object.get('searchCategory').id !== 'undefined'){
+        if(typeof (pvArgs.object.get('searchCategory')) !== 'undefined' && typeof (pvArgs.object.get('searchCategory').id) !== 'undefined'){
             var SearchCategory = Parse.Object.extend('SearchCategory');
             searchCategoryQuery = new Parse.Query(SearchCategory);
             searchCategoryQuery.get(pvArgs.object.get('searchCategory').id, {
