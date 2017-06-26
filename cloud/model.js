@@ -83,8 +83,13 @@ var gvTestWebsiteURL = 'balutestwebsite.html';
  *
  *  Where, as described aboce, the pvArgs is req.params and pvResponse is the res object.
  *
- *  On successfull completion, backend functions should call...
+ *  On successfull completion, backend functions should wrap up the data into an object where...
+ *      the first property is the createdDate
+ *      the second property is the id
+ *      the remaining properties are in the order they should be displayed in the console!
+ *      for FK references, the id come first followed, always, by the name
  *
+ *  Then the backend functions should call ...
  *      lvArgs.data = <the data object pulled from the database>
  *      lvArgs.log = lvLog;
  *      pvResponse.success(lvArgs)
@@ -240,17 +245,13 @@ module.exports = {
                 lvLog += log.log(gvScriptName,lvFunctionName,'retrieved ' + pvData.length + ' EthicalBrands from DB',' INFO');
                 lvArgs.rowCount = pvData.length;
                 for(var i = 0; i < pvData.length; i++){
-                    var lvBaluFavourite = null;
-                    if(pvData[i].get('baluFavourite') !== null && typeof(pvData[i].get('baluFavourite')) !== 'undefined'){
-                        lvBaluFavourite = pvData[i].get('baluFavourite').toString();
-                    }
                     lvArgs.data.push({
                         createdAt: pvData[i].createdAt.toLocaleString(),
                         brandId: pvData[i].id,
                         brandName: pvData[i].get('brandName'),
                         homepage: pvData[i].get('homepage'),
                         twitterHandle: pvData[i].get('twitterHandle'),
-                        baluFavourite: lvBaluFavourite,
+                        baluFavourite: pvData[i].get('baluFavourite'),
                         brandSpiel: pvData[i].get('brandSpiel'),
                         isArchived: pvData[i].get('isArchived')
                     });
@@ -364,15 +365,11 @@ module.exports = {
                 lvLog += log.log(gvScriptName,lvFunctionName,'retrieved ' + pvData.length + ' ProductGroups from DB',' INFO');
                 lvArgs.rowCount = pvData.length;
                 for(var i = 0; i < pvData.length; i++){
-                    var lvChristmasBanner = '';
-                    if(pvData[i].get('christmasBanner') !== null && typeof(pvData[i].get('christmasBanner')) !== 'undefined'){
-                        lvChristmasBanner = pvData[i].get('christmasBanner').toString();
-                    }
                     lvArgs.data.push({
                         createdAt: pvData[i].createdAt.toLocaleString(),
                         productGroupId: pvData[i].id,
                         productGroupName: pvData[i].get('productGroupName'),
-                        christmasBanner: lvChristmasBanner
+                        christmasBanner: pvData[i].get('christmasBanner')
                     });
                 }
                 lvArgs.log = lvLog;
@@ -388,7 +385,7 @@ module.exports = {
 
     getRecommendations: function(pvArgs, pvResponse){
 
-        var lvLog = '';
+        var lvLog = pvArgs.log;
         var lvErrorMessage = '';
         var lvFunctionName = 'getRecommendations';
         lvLog += log.log(gvScriptName,lvFunctionName,'Start', 'PROCS');
@@ -440,15 +437,15 @@ module.exports = {
                     lvArgs.data.push({
                         createdAt: pvData[i].createdAt.toLocaleString(),
                         recommendationId: pvData[i].id,
-                        productName: pvData[i].get('productName'),
-                        productURL: pvData[i].get('productURL'),
                         productGroupId: lvProductGroupId,
                         productGroupName: lvProductGroupName,
-                        brandId: pvData[i].get('ethicalBrand').id,
-                        brandName: pvData[i].get('ethicalBrand').get('brandName'),
-                        pageConfirmationSearch: pvData[i].get('pageConfirmationSearch'),
                         searchCategoryId: lvSearchCategoryId,
                         searchCategoryName: lvSearchCategoryName,
+                        productName: pvData[i].get('productName'),
+                        pageConfirmationSearch: pvData[i].get('pageConfirmationSearch'),
+                        productURL: pvData[i].get('productURL'),
+                        brandId: pvData[i].get('ethicalBrand').id,
+                        brandName: pvData[i].get('ethicalBrand').get('brandName'),
                         imageURL: lvImageURL,
                         isArchived: pvData[i].get('isArchived')
                     });
