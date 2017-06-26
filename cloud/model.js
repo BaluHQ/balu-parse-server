@@ -1351,8 +1351,7 @@ module.exports = {
            pvArgs.eventName === 'WEB_APP-BRAND_CLICK_THROUGH' ||
            pvArgs.eventName === 'WEB_APP-BRAND_DETAIL_CLICK' ||
            pvArgs.eventName === 'WEB_APP-SEARCH' ||
-           pvArgs.eventName === 'WEB_APP-PAGE_LOAD' ||
-           pvArgs.eventName === 'EXTENSION-UNINSTALL') {
+           pvArgs.eventName === 'WEB_APP-PAGE_LOAD') {
             log_event.set('eventName',pvArgs.eventName);
 
             var lvRecommendation_pointer;
@@ -1367,7 +1366,7 @@ module.exports = {
 
                 log_event.set('recommendation',lvRecommendation_pointer);
                 log_event.set('ethicalBrand',lvBrand_pointer);
-                log_event.set('searchTerm',pvArgs.searchTerm); // for EXTENSION-UNINSTALL this is the user ID
+                log_event.set('searchTerm',pvArgs.searchTerm);
                 log_event.set('url',pvArgs.url);
             }
 
