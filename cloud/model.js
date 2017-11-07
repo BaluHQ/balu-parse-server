@@ -151,7 +151,7 @@ module.exports = {
                     lvArgs.data.push({
                         createdAt: pvData[i].createdAt.toLocaleString(),
                         userId: pvData[i].id,
-                        email: pvData[i].get('email'),
+                        email: pvData[i].get('username'),
                         emailVerified: pvData[i].get('emailVerified'),
                         joyrideStatus: pvData[i].get('joyrideStatus'),
                         whoIs: pvData[i].get('whoIs')});
