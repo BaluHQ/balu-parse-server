@@ -13,7 +13,8 @@
     "kerberos": "~0.0.x",
     "parse": "~1.8.0",
     "parse-server": "*",
-    "parse-server-s3-adapter": "1.0.6"
+    "parse-server-s3-adapter": "1.0.6",
+    "npm": "5.6.x"
   },
   "scripts": {
     "start": "node index.js"
