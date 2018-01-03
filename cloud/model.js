@@ -385,7 +385,7 @@ module.exports = {
 
     getRecommendations: function(pvArgs, pvResponse){
 
-        var lvLog = pvArgs.log;
+        var lvLog = '';
         var lvErrorMessage = '';
         var lvFunctionName = 'getRecommendations';
         lvLog += log.log(gvScriptName,lvFunctionName,'Start', 'PROCS');
